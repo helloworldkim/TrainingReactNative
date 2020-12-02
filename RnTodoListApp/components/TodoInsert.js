@@ -5,21 +5,9 @@ import { Button, StyleSheet, TextInput, View } from 'react-native';
 const TodoInsert = ({ onAddTodo }) => {
     const [newTodoItem, setNewTodoItem] = useState('');
     const todoInputHandler = (newTodo) => {
-
         setNewTodoItem(newTodo);
     };
-    const addTodoHandlerforEnter = (e) => {
-        if (e.nativeEvent.key !== 'Enter') {
-            return;
-        }
-        onAddTodo(newTodoItem);
-        setNewTodoItem('');
 
-    };
-    const addTodoHandler = () => {
-        onAddTodo(newTodoItem);
-        setNewTodoItem('');
-    };
     return (
         <View style={styles.inputContainer}>
             <TextInput
@@ -27,11 +15,10 @@ const TodoInsert = ({ onAddTodo }) => {
                 placeholder="할일추가!!"
                 placeholderTextColor={'#999'}
                 onChangeText={todoInputHandler}
-                onKeyPress={addTodoHandlerforEnter}
                 value={newTodoItem}
                 autoCorrect={false} />
             <View style={styles.button}>
-                <Button title={'추가'} onPress={addTodoHandler} />
+                <Button title={'추가'} onPress={() => onAddTodo(newTodoItem)} />
             </View>
         </View>
     );
