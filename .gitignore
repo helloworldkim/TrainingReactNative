@@ -1,5 +1,7 @@
 #되나?~
 ##변경중
+#RnApp 무시
+/RnDataBaseApp
 
 # Xcode
 !**/*.xcodeproj
